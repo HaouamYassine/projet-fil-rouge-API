@@ -31,13 +31,13 @@ public class UserController {
                 .body(newUser);
     }
 
-    //READ
+    //READ - GET ALL USERS
     @GetMapping
     public ResponseEntity<List<UserDto>> fetchAll() {
         return ResponseEntity.ok(userService.fetchAll());
     }
 
-    //READ
+    //READ - GET USER BY ID
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable("id") Long userId) {
        UserDto userDto = userService.findById(userId);
@@ -48,7 +48,7 @@ public class UserController {
         return ResponseEntity.ok(userDto);
     }
 
-    //UPDATE
+    //UPDATE BY ID
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> update(@PathVariable("id") Long userId, @RequestBody UserDto userDto) {
         userService.update(userDto, userId);
@@ -56,7 +56,7 @@ public class UserController {
     }
 
 
-    //DELETE
+    //DELETE BY ID
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") Long userId)
     {

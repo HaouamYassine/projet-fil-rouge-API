@@ -4,11 +4,11 @@ import com.example.projetfilrougefrontend.dto.EventDto;
 import com.example.projetfilrougefrontend.dto.UserDto;
 import com.example.projetfilrougefrontend.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/events")
@@ -31,4 +31,25 @@ public class EventController {
                 .ok()
                 .body(newEvent);
     }
+
+    // GET = READ
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<EventDto> displayAllEvents() {
+        List<EventDto> eventDtoList = eventService.fetchEvents();
+        return eventDtoList;
+    }
+
+    // UPDATE
+    @PutMapping("/{id}")
+    public ResponseEntity<EventDto> update(@PathVariable("id") Long eventId, @RequestBody EventDto eventDto) {
+        eventService.update(eventDto, eventId);
+        return ResponseEntity.ok(eventDto);
+    }
+
+    //DEL = DELETE
+    @DeleteMapping("{id}")
+    public void DeleteById(@PathVariable("id") Long eventId) {
+        eventService.deleteById(eventId);
+    }
+
 }

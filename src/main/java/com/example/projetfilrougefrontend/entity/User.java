@@ -27,6 +27,16 @@ public class User {
     public User() {
     }
 
+    public User(Long id, Boolean admin, String username, String mail, String password, Boolean activate, List<Event> eventList) {
+        this.id = id;
+        this.admin = admin;
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+        this.activate = activate;
+        this.eventList = eventList;
+    }
+
     public Long getId() {
         return id;
     }
