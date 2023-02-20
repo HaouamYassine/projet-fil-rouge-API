@@ -1,5 +1,11 @@
 package com.example.projetfilrougefrontend.entity;
 
+import com.example.projetfilrougefrontend.dto.EventDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -12,6 +18,9 @@ public class Event {
     private Long id;
     private String title;
     private String description;
+
+
+//    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     @ManyToMany
@@ -25,6 +34,14 @@ public class Event {
 
 
     public Event() {
+    }
+
+    public Event(Long id, String title, String description, LocalDate date, List<User> users) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.users = users;
     }
 
     public Long getId() {
@@ -66,5 +83,17 @@ public class Event {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public EventDto toDto() {
+        EventDto eventDto = new EventDto();
+
+        eventDto.setId(this.id);
+        eventDto.setDate(this.date);
+        eventDto.setTitle(this.title);
+        eventDto.setDescription(this.description);
+        eventDto.setUsers(this.users);
+     return eventDto;
+
     }
 }
