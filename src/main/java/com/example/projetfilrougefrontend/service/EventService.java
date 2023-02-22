@@ -8,6 +8,10 @@ import com.example.projetfilrougefrontend.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 public class EventService {
 
@@ -19,6 +23,25 @@ public class EventService {
         eventRepository.save(event);
     }
 
+    public void deleteById(Long eventId){
+        eventRepository.deleteById(eventId);
+    }
 
 
+    public List<EventDto> fetchEvents() {
+        return eventRepository.findAll()
+                .stream()
+                .map(user -> user.toDto())
+                .collect(Collectors.toList());
+    }
+
+    public void update(EventDto eventDto, Long eventId) {
+        Event event = eventDto.toEntity();
+        Optional<Event> eventToUpdate = eventRepository.findById(eventId);
+        if (eventToUpdate.isPresent())
+        {
+            event.setId(eventToUpdate.get().getId());
+            eventRepository.save(event);
+        }
+    }
 }
