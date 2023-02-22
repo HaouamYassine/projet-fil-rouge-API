@@ -3,6 +3,8 @@ package com.example.projetfilrougefrontend.dto;
 
 import com.example.projetfilrougefrontend.entity.User;
 
+import java.time.LocalDate;
+
 public class UserDto {
     private Long id;
     private Boolean admin;
@@ -11,9 +13,53 @@ public class UserDto {
     private String password;
     private Boolean activate;
     private String ville;
-
+    private String firstname;
+    private String lastname;
+    private LocalDate birthdate;
+    private String gender;
+    private String phone;
 
     public UserDto() {
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getVille() {
@@ -82,6 +128,10 @@ public class UserDto {
         user.setMail(this.mail);
         user.setActivate(this.activate);
         user.setVille(this.ville);
+        user.setBirthdate(this.birthdate);
+        user.setPhone(this.phone);
+        user.setFirstname(this.firstname);
+        user.setLastname(this.lastname);
 
 
         return user;

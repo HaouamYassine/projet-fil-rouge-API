@@ -3,6 +3,7 @@ package com.example.projetfilrougefrontend.entity;
 import com.example.projetfilrougefrontend.dto.UserDto;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,11 @@ public class User {
     private String password;
     private Boolean activate;
     private String ville;
+    private String firstname;
+    private String lastname;
+    private LocalDate birthdate;
+    private String gender;
+    private String phone;
 
     @ManyToMany
     @JoinTable( name = "userAffiliate",
@@ -28,6 +34,46 @@ public class User {
     public User() {
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getVille() {
         return ville;
     }
@@ -36,7 +82,19 @@ public class User {
         this.ville = ville;
     }
 
-    public User(Long id, Boolean admin, String username, String mail, String password, Boolean activate,String ville, List<Event> eventList) {
+    public User(Long id, Boolean admin,
+                String username,
+                String mail,
+                String password,
+                Boolean activate,
+                String ville,
+                String firstname,
+                String lastname,
+                LocalDate birthdate,
+                String gender,
+                String phone,
+
+                List<Event> eventList) {
         this.id = id;
         this.admin = admin;
         this.username = username;
@@ -44,6 +102,12 @@ public class User {
         this.password = password;
         this.activate = activate;
         this.ville=ville;
+        this.firstname=firstname;
+        this.lastname=lastname;
+        this.birthdate=birthdate;
+        this.gender=gender;
+        this.phone=phone;
+
         this.eventList = eventList;
     }
 
@@ -113,6 +177,11 @@ public class User {
         userDto.setMail(this.mail);
         userDto.setActivate(this.activate);
         userDto.setVille(this.ville);
+        userDto.setBirthdate(this.birthdate);
+        userDto.setGender(this.gender);
+        userDto.setPhone(this.phone);
+        userDto.setFirstname(this.firstname);
+        userDto.setLastname(this.lastname);
         return userDto;
     }
 }

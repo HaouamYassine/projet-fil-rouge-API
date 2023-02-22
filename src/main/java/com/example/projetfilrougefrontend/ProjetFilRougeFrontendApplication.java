@@ -44,6 +44,11 @@ public class ProjetFilRougeFrontendApplication {
                         "admin",
                         true,
                         "Paris",
+                        "Admin",
+                        "Admin",
+                        LocalDate.of(1996,6,25),
+                        "Other",
+                        "0600000000",
                         null);
                 userRepository.save(user);
 
@@ -55,6 +60,11 @@ public class ProjetFilRougeFrontendApplication {
                         "y123",
                         true,
                         "Bruxelles",
+                        "Yassine",
+                        "Haouam",
+                        LocalDate.of(1996,6,25),
+                        "M",
+                        "0600000000",
                         null);
                 userRepository.save(user1);
 
@@ -66,6 +76,11 @@ public class ProjetFilRougeFrontendApplication {
                         "h123",
                         true,
                         "London",
+                        "Hamid",
+                        "Zouba",
+                        LocalDate.of(1997,9,18),
+                        "M",
+                        "0600000000",
                         null);
                 userRepository.save(user2);
 
@@ -77,6 +92,11 @@ public class ProjetFilRougeFrontendApplication {
                         "n123",
                         true,
                         "Madrid",
+                        "Nathan",
+                        "Angular",
+                        LocalDate.of(1980,8,12),
+                        "M",
+                        "0600000000",
                         null);
                 userRepository.save(user3);
 
@@ -88,6 +108,11 @@ public class ProjetFilRougeFrontendApplication {
                         "bot1",
                         true,
                         "Rome",
+                        "bot",
+                        "bot1",
+                        LocalDate.of(2000,1,1),
+                        "Other",
+                        "0600000000",
                         null);
                 userRepository.save(user4);
 
@@ -99,6 +124,11 @@ public class ProjetFilRougeFrontendApplication {
                         "bot2",
                         true,
                         "Berlin",
+                        "bot",
+                        "bot2",
+                        LocalDate.of(2000,1,1),
+                        "Other",
+                        "0600000000",
                         null);
                 userRepository.save(user5);
 
@@ -110,6 +140,11 @@ public class ProjetFilRougeFrontendApplication {
                         "bot3",
                         true,
                         "Alger",
+                        "bot",
+                        "bot3",
+                        LocalDate.of(2000,1,1),
+                        "Other",
+                        "0600000000",
                         null);
                 userRepository.save(user6);
 
@@ -120,6 +155,15 @@ public class ProjetFilRougeFrontendApplication {
                         LocalDate.of(2023,03,1),
                         null);
                 eventRepository.save(event);
+
+                Event event1 = new Event(
+                        2L,
+                        "RDV n°2",
+                        "Rendez vous numéro deux",
+                        LocalDate.of(2023,03,5),
+                        null);
+                eventRepository.save(event1);
+
 
 
             }
