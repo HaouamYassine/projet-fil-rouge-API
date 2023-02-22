@@ -27,8 +27,8 @@ public class EventController {
 
         try {
             eventService.save(newEvent);
-        } catch (Exception e)
-        { e.getMessage();
+        } catch (Exception e) {
+            e.getMessage();
 
         }
 

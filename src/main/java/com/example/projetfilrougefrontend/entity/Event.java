@@ -19,8 +19,6 @@ public class Event {
     private Long id;
     private String title;
     private String description;
-
-
     //  @JsonFormat(pattern = "yyyy-MM-dd")
     //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
@@ -93,6 +91,7 @@ public class Event {
         eventDto.setTitle(this.title);
         eventDto.setDescription(this.description);
         eventDto.setUsers(this.users);
+        eventDto.setDate(this.date);
         return eventDto;
 
     }

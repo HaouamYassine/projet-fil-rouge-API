@@ -16,11 +16,7 @@ public class EventDto {
     private Long id;
     private String title;
     private String description;
-    private String ville;
-
-
 //    @JsonFormat(pattern = "yyyy-MM-dd")
-//
     private LocalDate date;
 
     private List<User> users;
@@ -28,13 +24,6 @@ public class EventDto {
     public EventDto() {
     }
 
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
 
     public Long getId() {
         return id;
@@ -81,7 +70,7 @@ public class EventDto {
         event.setTitle(this.title);
         event.setDescription(this.description);
         event.setUsers(this.users);
-
+        event.setDate(this.date);
 
         return event;
     }
