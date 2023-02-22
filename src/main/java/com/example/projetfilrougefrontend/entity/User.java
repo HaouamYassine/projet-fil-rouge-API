@@ -82,6 +82,17 @@ public class User {
         this.ville = ville;
     }
 
+    public User(String mail, String password, String ville, String firstname, String lastname, LocalDate birthdate, String gender, String phone) {
+        this.mail = mail;
+        this.password = password;
+        this.ville = ville;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birthdate = birthdate;
+        this.gender = gender;
+        this.phone = phone;
+    }
+
     public User(Long id, Boolean admin,
                 String username,
                 String mail,
