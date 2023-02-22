@@ -35,6 +35,15 @@ public class EventService {
                 .collect(Collectors.toList());
     }
 
+    public EventDto findById(Long eventId){
+
+        Optional<Event> event = eventRepository.findById(eventId);
+        return (event.get()).toDto();
+    }
+
+
+
+
     public void update(EventDto eventDto, Long eventId) {
         Event event = eventDto.toEntity();
         Optional<Event> eventToUpdate = eventRepository.findById(eventId);
