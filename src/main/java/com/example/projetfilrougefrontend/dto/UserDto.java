@@ -10,9 +10,18 @@ public class UserDto {
     private String mail;
     private String password;
     private Boolean activate;
+    private String ville;
 
 
     public UserDto() {
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
     }
 
     public Long getId() {
@@ -72,6 +81,7 @@ public class UserDto {
         user.setPassword(this.password);
         user.setMail(this.mail);
         user.setActivate(this.activate);
+        user.setVille(this.ville);
 
 
         return user;
