@@ -16,6 +16,7 @@ public class User {
     private String mail;
     private String password;
     private Boolean activate;
+    private String ville;
 
     @ManyToMany
     @JoinTable( name = "userAffiliate",
@@ -27,13 +28,22 @@ public class User {
     public User() {
     }
 
-    public User(Long id, Boolean admin, String username, String mail, String password, Boolean activate, List<Event> eventList) {
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public User(Long id, Boolean admin, String username, String mail, String password, Boolean activate,String ville, List<Event> eventList) {
         this.id = id;
         this.admin = admin;
         this.username = username;
         this.mail = mail;
         this.password = password;
         this.activate = activate;
+        this.ville=ville;
         this.eventList = eventList;
     }
 
@@ -102,6 +112,7 @@ public class User {
         userDto.setPassword(this.password);
         userDto.setMail(this.mail);
         userDto.setActivate(this.activate);
+        userDto.setVille(this.ville);
         return userDto;
     }
 }

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -18,19 +19,15 @@ public class Event {
     private Long id;
     private String title;
     private String description;
-
-
-//    @JsonFormat(pattern = "yyyy-MM-dd")
+    //  @JsonFormat(pattern = "yyyy-MM-dd")
+    //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
 
     @ManyToMany
-    @JoinTable( name = "userAffiliate",
-    joinColumns = @JoinColumn(name="idUser"),
-            inverseJoinColumns = @JoinColumn( name = "idEvent" ) )
+    @JoinTable(name = "userAffiliate",
+            joinColumns = @JoinColumn(name = "idUser"),
+            inverseJoinColumns = @JoinColumn(name = "idEvent"))
     private List<User> users = new ArrayList<User>();
-
-
-
 
 
     public Event() {
@@ -69,6 +66,7 @@ public class Event {
         this.description = description;
     }
 
+
     public LocalDate getDate() {
         return date;
     }
@@ -93,7 +91,8 @@ public class Event {
         eventDto.setTitle(this.title);
         eventDto.setDescription(this.description);
         eventDto.setUsers(this.users);
-     return eventDto;
+        eventDto.setDate(this.date);
+        return eventDto;
 
     }
 }

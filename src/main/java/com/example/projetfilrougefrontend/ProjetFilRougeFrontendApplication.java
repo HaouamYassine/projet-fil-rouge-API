@@ -43,6 +43,7 @@ public class ProjetFilRougeFrontendApplication {
                         "admin@mail.com",
                         "admin",
                         true,
+                        "Paris",
                         null);
                 userRepository.save(user);
 
@@ -53,6 +54,7 @@ public class ProjetFilRougeFrontendApplication {
                         "yassine@mail.com",
                         "y123",
                         true,
+                        "Bruxelles",
                         null);
                 userRepository.save(user1);
 
@@ -63,6 +65,7 @@ public class ProjetFilRougeFrontendApplication {
                         "hamid@mail.com",
                         "h123",
                         true,
+                        "London",
                         null);
                 userRepository.save(user2);
 
@@ -73,6 +76,7 @@ public class ProjetFilRougeFrontendApplication {
                         "nathan@mail.com",
                         "n123",
                         true,
+                        "Madrid",
                         null);
                 userRepository.save(user3);
 
@@ -83,6 +87,7 @@ public class ProjetFilRougeFrontendApplication {
                         "bot1@mail.com",
                         "bot1",
                         true,
+                        "Rome",
                         null);
                 userRepository.save(user4);
 
@@ -93,6 +98,7 @@ public class ProjetFilRougeFrontendApplication {
                         "bot2@mail.com",
                         "bot2",
                         true,
+                        "Berlin",
                         null);
                 userRepository.save(user5);
 
@@ -103,6 +109,7 @@ public class ProjetFilRougeFrontendApplication {
                         "bot3@mail.com",
                         "bot3",
                         true,
+                        "Alger",
                         null);
                 userRepository.save(user6);
 

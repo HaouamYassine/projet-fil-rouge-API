@@ -1,7 +1,7 @@
 package com.example.projetfilrougefrontend.controller;
 
 import com.example.projetfilrougefrontend.dto.EventDto;
-import com.example.projetfilrougefrontend.dto.UserDto;
+import com.example.projetfilrougefrontend.entity.Event;
 import com.example.projetfilrougefrontend.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,9 +25,14 @@ public class EventController {
     @PostMapping("/add")
     ResponseEntity<EventDto> newEvent(@RequestBody EventDto newEvent) {
 
-        eventService.save(newEvent);
+        try {
+            eventService.save(newEvent);
+        } catch (Exception e) {
+            e.getMessage();
 
-        return ResponseEntity //
+        }
+
+        return ResponseEntity
                 .ok()
                 .body(newEvent);
     }
