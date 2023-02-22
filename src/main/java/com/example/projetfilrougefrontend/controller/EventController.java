@@ -1,6 +1,7 @@
 package com.example.projetfilrougefrontend.controller;
 
 import com.example.projetfilrougefrontend.dto.EventDto;
+import com.example.projetfilrougefrontend.dto.UserDto;
 import com.example.projetfilrougefrontend.entity.Event;
 import com.example.projetfilrougefrontend.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,16 @@ public class EventController {
     public List<EventDto> displayAllEvents() {
         List<EventDto> eventDtoList = eventService.fetchEvents();
         return eventDtoList;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<EventDto> findById(@PathVariable("id") Long eventId) {
+        EventDto eventDto = eventService.findById(eventId);
+        if (eventDto == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(eventDto);
     }
 
     // UPDATE
