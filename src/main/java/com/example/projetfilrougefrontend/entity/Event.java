@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
@@ -19,12 +20,10 @@ public class Event {
     private Long id;
     private String title;
     private String description;
-
-
-    //  @JsonFormat(pattern = "yyyy-MM-dd")
-    //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
    //TODO: mettre strartime et endtime en format LocalDateTime
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     @ManyToMany
     @JoinTable(name = "userAffiliate",
             joinColumns = @JoinColumn(name = "idUser"),
@@ -41,6 +40,22 @@ public class Event {
         this.description = description;
         this.date = date;
         this.users = users;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
     }
 
     public Long getId() {
@@ -89,11 +104,13 @@ public class Event {
         EventDto eventDto = new EventDto();
         //TODO: mettre strartime et endtime en format LocalDateTime
         eventDto.setId(this.id);
-        eventDto.setDate(this.date);
         eventDto.setTitle(this.title);
+        eventDto.setDate(this.date);
+        eventDto.setStartTime(this.startTime);
+        eventDto.setEndTime(this.endTime);
         eventDto.setDescription(this.description);
         eventDto.setUsers(this.users);
-        return eventDto;
 
+        return eventDto;
     }
 }

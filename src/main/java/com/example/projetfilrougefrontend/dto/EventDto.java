@@ -10,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class EventDto {
@@ -17,8 +18,8 @@ public class EventDto {
     private String title;
     private String description;
     //TODO: mettre strartime et endtime en format LocalDateTime
-//    @JsonFormat(pattern = "yyyy-MM-dd")
-//
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private LocalDate date;
 
     private List<User> users;
@@ -58,6 +59,22 @@ public class EventDto {
         this.date = date;
     }
 
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
     public List<User> getUsers() {
         return users;
     }
@@ -70,10 +87,11 @@ public class EventDto {
         //TODO: mettre strartime et endtime en format LocalDateTime
         event.setId(this.id);
         event.setTitle(this.title);
+        event.setDate(this.date);
+        event.setStartTime(this.startTime);
+        event.setEndTime(this.endTime);
         event.setDescription(this.description);
         event.setUsers(this.users);
-        event.setDate(this.date);
-
 
         return event;
     }
