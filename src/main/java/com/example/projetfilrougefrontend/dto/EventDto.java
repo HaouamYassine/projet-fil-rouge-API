@@ -71,6 +71,7 @@ public class EventDto {
         event.setTitle(this.title);
         event.setDescription(this.description);
         event.setUsers(this.users);
+        event.setDate(this.date);
 
 
         return event;
