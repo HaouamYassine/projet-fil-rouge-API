@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @SpringBootApplication
 public class ProjetFilRougeFrontendApplication {
@@ -149,22 +150,31 @@ public class ProjetFilRougeFrontendApplication {
                 userRepository.save(user6);
 
                 Event event = new Event(
-                        1L,
                         "RDV n°1",
                         "Rendez vous numéro un",
-                        LocalDate.of(2023,03,1),
-                        null);
+                        LocalDate.of(2023, 03, 1),
+                        LocalTime.of(8, 30, 0),
+                        LocalTime.of(10, 30, 0)
+                );
                 eventRepository.save(event);
 
-                Event event1 = new Event(
-                        2L,
+                Event event2 = new Event(
                         "RDV n°2",
                         "Rendez vous numéro deux",
-                        LocalDate.of(2023,03,5),
-                        null);
-                eventRepository.save(event1);
+                        LocalDate.of(2023, 03, 2),
+                        LocalTime.of(15, 30, 0),
+                        LocalTime.of(18, 30, 0)
+                );
+                eventRepository.save(event2);
 
-
+                Event event3 = new Event(
+                        "Soutenance CGI",
+                        "Rendez vous numéro un",
+                        LocalDate.of(2023, 02, 27),
+                        LocalTime.of(15, 30, 0),
+                        LocalTime.of(16, 30, 0)
+                );
+                eventRepository.save(event3);
 
             }
         };

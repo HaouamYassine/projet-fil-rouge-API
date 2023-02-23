@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 @Entity
@@ -21,9 +22,9 @@ public class Event {
     private String title;
     private String description;
     private LocalDate date;
-   //TODO: mettre strartime et endtime en format LocalDateTime
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+   //TODO: mettre strartime et endtime en format LocalTime
+    private LocalTime startTime;
+    private LocalTime endTime;
     @ManyToMany
     @JoinTable(name = "userAffiliate",
             joinColumns = @JoinColumn(name = "idUser"),
@@ -42,19 +43,27 @@ public class Event {
         this.users = users;
     }
 
-    public LocalDateTime getStartTime() {
+    public Event(String title, String description, LocalDate date, LocalTime startTime, LocalTime endTime) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public LocalTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(LocalTime endTime) {
         this.endTime = endTime;
     }
 
