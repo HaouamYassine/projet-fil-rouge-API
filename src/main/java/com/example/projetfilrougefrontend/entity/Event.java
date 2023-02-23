@@ -24,7 +24,7 @@ public class Event {
     //  @JsonFormat(pattern = "yyyy-MM-dd")
     //@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate date;
-
+   //TODO: mettre strartime et endtime en format LocalDateTime
     @ManyToMany
     @JoinTable(name = "userAffiliate",
             joinColumns = @JoinColumn(name = "idUser"),
@@ -87,7 +87,7 @@ public class Event {
 
     public EventDto toDto() {
         EventDto eventDto = new EventDto();
-
+        //TODO: mettre strartime et endtime en format LocalDateTime
         eventDto.setId(this.id);
         eventDto.setDate(this.date);
         eventDto.setTitle(this.title);

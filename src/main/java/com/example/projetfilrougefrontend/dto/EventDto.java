@@ -16,7 +16,7 @@ public class EventDto {
     private Long id;
     private String title;
     private String description;
-
+    //TODO: mettre strartime et endtime en format LocalDateTime
 //    @JsonFormat(pattern = "yyyy-MM-dd")
 //
     private LocalDate date;
@@ -67,6 +67,7 @@ public class EventDto {
     }
 
     public Event toEntity() {Event event = new Event();
+        //TODO: mettre strartime et endtime en format LocalDateTime
         event.setId(this.id);
         event.setTitle(this.title);
         event.setDescription(this.description);
