@@ -1,16 +1,9 @@
 package com.example.projetfilrougefrontend.entity;
 
 import com.example.projetfilrougefrontend.dto.EventDto;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -22,7 +15,7 @@ public class Event {
     private String title;
     private String description;
     private LocalDate date;
-   //TODO: mettre strartime et endtime en format LocalTime
+    //TODO: mettre strartime et endtime en format LocalTime
     private LocalTime startTime;
     private LocalTime endTime;
     @ManyToMany
@@ -122,4 +115,5 @@ public class Event {
 
         return eventDto;
     }
+
 }
