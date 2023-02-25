@@ -14,6 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class ProjetFilRougeFrontendApplication {
@@ -33,7 +36,7 @@ public class ProjetFilRougeFrontendApplication {
 
     @Bean
     @Transactional
-    CommandLineRunner commandLineRunner(){
+    CommandLineRunner commandLineRunner() {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
@@ -47,7 +50,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Paris",
                         "Admin",
                         "Admin",
-                        LocalDate.of(1996,6,25),
+                        LocalDate.of(1996, 6, 25),
                         "Other",
                         "0600000000",
                         null);
@@ -63,7 +66,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Bruxelles",
                         "Yassine",
                         "Haouam",
-                        LocalDate.of(1996,6,25),
+                        LocalDate.of(1996, 6, 25),
                         "M",
                         "0600000000",
                         null);
@@ -79,7 +82,7 @@ public class ProjetFilRougeFrontendApplication {
                         "London",
                         "Hamid",
                         "Zouba",
-                        LocalDate.of(1997,9,18),
+                        LocalDate.of(1997, 9, 18),
                         "M",
                         "0600000000",
                         null);
@@ -95,7 +98,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Madrid",
                         "Nathan",
                         "Angular",
-                        LocalDate.of(1980,8,12),
+                        LocalDate.of(1980, 8, 12),
                         "M",
                         "0600000000",
                         null);
@@ -111,7 +114,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Rome",
                         "bot",
                         "bot1",
-                        LocalDate.of(2000,1,1),
+                        LocalDate.of(2000, 1, 1),
                         "Other",
                         "0600000000",
                         null);
@@ -127,7 +130,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Berlin",
                         "bot",
                         "bot2",
-                        LocalDate.of(2000,1,1),
+                        LocalDate.of(2000, 1, 1),
                         "Other",
                         "0600000000",
                         null);
@@ -143,7 +146,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Alger",
                         "bot",
                         "bot3",
-                        LocalDate.of(2000,1,1),
+                        LocalDate.of(2000, 1, 1),
                         "Other",
                         "0600000000",
                         null);
@@ -176,6 +179,30 @@ public class ProjetFilRougeFrontendApplication {
                 );
                 eventRepository.save(event3);
 
+
+                // Test d'ajout d'User avec Evenement:
+
+                Event event4 = new Event(
+                        "Anniv Hamid",
+                        "personne n'est venu",
+                        LocalDate.of(2023, 2, 27),
+                        LocalTime.of(15, 30, 0),
+                        LocalTime.of(16, 30, 0));
+                eventRepository.save(event4);
+
+                // Ajout des événements à la liste d'événements de l'utilisateur
+                List<Event> events = new ArrayList<>();
+                events.add(event3);
+                events.add(event4);
+                user6.setEventList(events);
+
+                // Ajout de l'utilisateur à la liste d'utilisateurs de chaque événement
+                event3.setUsers(Arrays.asList(user6));
+                event4.setUsers(Arrays.asList(user6));
+
+                userRepository.save(user6);
+                eventRepository.save(event3);
+                eventRepository.save(event4);
             }
         };
     }
