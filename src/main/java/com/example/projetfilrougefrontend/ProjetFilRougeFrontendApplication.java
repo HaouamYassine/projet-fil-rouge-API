@@ -200,9 +200,7 @@ public class ProjetFilRougeFrontendApplication {
                 event3.setUsers(Arrays.asList(user6));
                 event4.setUsers(Arrays.asList(user6));
 
-                userRepository.save(user6);
-                eventRepository.save(event3);
-                eventRepository.save(event4);
+               // userRepository.update(user6);
             }
         };
     }
