@@ -132,6 +132,7 @@ public class UserDto {
         user.setPhone(this.phone);
         user.setFirstname(this.firstname);
         user.setLastname(this.lastname);
+        user.setGender(this.gender);
 
 
         return user;
