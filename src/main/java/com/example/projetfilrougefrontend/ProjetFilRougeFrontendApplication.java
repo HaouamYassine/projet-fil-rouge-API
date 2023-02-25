@@ -197,10 +197,10 @@ public class ProjetFilRougeFrontendApplication {
                 user6.setEventList(events);
 
                 // Ajout de l'utilisateur à la liste d'utilisateurs de chaque événement
-                event3.setUsers(Arrays.asList(user6));
-                event4.setUsers(Arrays.asList(user6));
+                event3.setUser(user6);
+                event4.setUser(user6);
 
-               // userRepository.update(user6);
+//                userRepository.save(user6);
             }
         };
     }
