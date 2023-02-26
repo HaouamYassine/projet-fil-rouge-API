@@ -4,6 +4,7 @@ import com.example.projetfilrougefrontend.dto.EventDto;
 import com.example.projetfilrougefrontend.dto.UserDto;
 import com.example.projetfilrougefrontend.entity.Event;
 import com.example.projetfilrougefrontend.service.EventService;
+import io.micrometer.observation.Observation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -56,6 +57,16 @@ public class EventController {
 
         return ResponseEntity.ok(eventDto);
     }
+
+//    @GetMapping("/user/{id}")
+//    public ResponseEntity<UserDto> (@PathVariable("id") UserDto userDto) {
+//        EventDto eventDto = eventService.fetchEventsById(userDto);
+//        if (userDto.i) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        return ResponseEntity.ok(eventDto);
+//    }
 
     // UPDATE
     @PutMapping("/{id}")

@@ -18,6 +18,10 @@ public class EventService {
     @Autowired
     EventRepository eventRepository;
 
+    public List<Event> fetchEventsById(UserDto userDto) {
+        return eventRepository.findEventsByUser(userDto.toEntity());
+    }
+
     public void save(EventDto eventDto) {
         Event event = eventDto.toEntity();
         eventRepository.save(event);

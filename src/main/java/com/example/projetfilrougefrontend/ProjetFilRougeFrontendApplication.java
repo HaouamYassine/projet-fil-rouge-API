@@ -4,6 +4,7 @@ import com.example.projetfilrougefrontend.entity.Event;
 import com.example.projetfilrougefrontend.entity.User;
 import com.example.projetfilrougefrontend.repository.EventRepository;
 import com.example.projetfilrougefrontend.repository.UserRepository;
+import com.example.projetfilrougefrontend.service.EventService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -26,6 +27,8 @@ public class ProjetFilRougeFrontendApplication {
     UserRepository userRepository;
     @Autowired
     EventRepository eventRepository;
+    @Autowired
+    EventService eventService;
 //    @Autowired
 //    BCryptPasswordEncoder passwordEncoder;
 
@@ -154,7 +157,7 @@ public class ProjetFilRougeFrontendApplication {
                         LocalTime.of(10, 30, 0),
                         user3
                 );
-                eventRepository.save(event);
+                eventService.save(event.toDto());
 
                 Event event2 = new Event(
                         2L,

@@ -26,7 +26,7 @@ public class Event {
     private LocalTime endTime;
     @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinColumn(name="idUser", nullable=false)
-    private User user = new User();
+    private User user;
 
 
     public Event() {
