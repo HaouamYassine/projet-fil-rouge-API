@@ -43,7 +43,8 @@ public class Event {
         this.user = user;
     }
 
-    public Event(String title, String description, LocalDate date, LocalTime startTime, LocalTime endTime) {
+    public Event(Long id, String title, String description, LocalDate date, LocalTime startTime, LocalTime endTime) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;

@@ -3,6 +3,7 @@ package com.example.projetfilrougefrontend.dto;
 import com.example.projetfilrougefrontend.entity.Event;
 import com.example.projetfilrougefrontend.entity.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -22,7 +23,7 @@ public class EventDto {
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDate date;
-
+    @JsonIgnore
     private User user;
 
     public EventDto() {

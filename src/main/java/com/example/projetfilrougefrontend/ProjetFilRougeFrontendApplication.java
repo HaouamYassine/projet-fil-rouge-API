@@ -153,6 +153,7 @@ public class ProjetFilRougeFrontendApplication {
                 userRepository.save(user6);
 
                 Event event = new Event(
+                        1L,
                         "RDV n°1",
                         "Rendez vous numéro un",
                         LocalDate.of(2023, 03, 1),
@@ -162,6 +163,7 @@ public class ProjetFilRougeFrontendApplication {
                 eventRepository.save(event);
 
                 Event event2 = new Event(
+                        2L,
                         "RDV n°2",
                         "Rendez vous numéro deux",
                         LocalDate.of(2023, 03, 2),
@@ -171,6 +173,7 @@ public class ProjetFilRougeFrontendApplication {
                 eventRepository.save(event2);
 
                 Event event3 = new Event(
+                        3L,
                         "Soutenance CGI",
                         "Rendez vous numéro un",
                         LocalDate.of(2023, 02, 27),
@@ -183,6 +186,7 @@ public class ProjetFilRougeFrontendApplication {
                 // Test d'ajout d'User avec Evenement:
 
                 Event event4 = new Event(
+                        4L,
                         "Anniv Hamid",
                         "personne n'est venu",
                         LocalDate.of(2023, 2, 27),
