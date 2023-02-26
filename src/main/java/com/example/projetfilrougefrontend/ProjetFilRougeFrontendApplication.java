@@ -52,8 +52,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Admin",
                         LocalDate.of(1996, 6, 25),
                         "Other",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user);
 
                 User user1 = new User(
@@ -68,8 +67,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Haouam",
                         LocalDate.of(1996, 6, 25),
                         "M",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user1);
 
                 User user2 = new User(
@@ -84,8 +82,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Zouba",
                         LocalDate.of(1997, 9, 18),
                         "M",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user2);
 
                 User user3 = new User(
@@ -100,8 +97,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Angular",
                         LocalDate.of(1980, 8, 12),
                         "M",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user3);
 
                 User user4 = new User(
@@ -116,8 +112,7 @@ public class ProjetFilRougeFrontendApplication {
                         "bot1",
                         LocalDate.of(2000, 1, 1),
                         "Other",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user4);
 
                 User user5 = new User(
@@ -132,8 +127,7 @@ public class ProjetFilRougeFrontendApplication {
                         "bot2",
                         LocalDate.of(2000, 1, 1),
                         "Other",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user5);
 
                 User user6 = new User(
@@ -148,8 +142,7 @@ public class ProjetFilRougeFrontendApplication {
                         "bot3",
                         LocalDate.of(2000, 1, 1),
                         "Other",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user6);
 
                 Event event = new Event(
@@ -158,7 +151,8 @@ public class ProjetFilRougeFrontendApplication {
                         "Rendez vous numéro un",
                         LocalDate.of(2023, 03, 1),
                         LocalTime.of(8, 30, 0),
-                        LocalTime.of(10, 30, 0)
+                        LocalTime.of(10, 30, 0),
+                        user3
                 );
                 eventRepository.save(event);
 
@@ -168,7 +162,8 @@ public class ProjetFilRougeFrontendApplication {
                         "Rendez vous numéro deux",
                         LocalDate.of(2023, 03, 2),
                         LocalTime.of(15, 30, 0),
-                        LocalTime.of(18, 30, 0)
+                        LocalTime.of(18, 30, 0),
+                        user2
                 );
                 eventRepository.save(event2);
 
@@ -178,7 +173,8 @@ public class ProjetFilRougeFrontendApplication {
                         "Rendez vous numéro un",
                         LocalDate.of(2023, 02, 27),
                         LocalTime.of(15, 30, 0),
-                        LocalTime.of(16, 30, 0)
+                        LocalTime.of(16, 30, 0),
+                        user1
                 );
                 eventRepository.save(event3);
 
@@ -191,18 +187,20 @@ public class ProjetFilRougeFrontendApplication {
                         "personne n'est venu",
                         LocalDate.of(2023, 2, 27),
                         LocalTime.of(15, 30, 0),
-                        LocalTime.of(16, 30, 0));
+                        LocalTime.of(16, 30, 0),
+                        user3
+                );
                 eventRepository.save(event4);
 
                 // Ajout des événements à la liste d'événements de l'utilisateur
-                List<Event> events = new ArrayList<>();
-                events.add(event3);
-                events.add(event4);
-                user6.setEventList(events);
+//                List<Event> events = new ArrayList<>();
+//                events.add(event3);
+//                events.add(event4);
+//                user6.setEventList(Arrays.asList(event4));
 
                 // Ajout de l'utilisateur à la liste d'utilisateurs de chaque événement
-                event3.setUser(user6);
-                event4.setUser(user6);
+//                event3.setUser(user6);
+//                event4.setUser(user6);
 
 //                userRepository.save(user6);
             }

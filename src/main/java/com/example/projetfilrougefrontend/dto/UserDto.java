@@ -1,9 +1,11 @@
 package com.example.projetfilrougefrontend.dto;
 
 
+import com.example.projetfilrougefrontend.entity.Event;
 import com.example.projetfilrougefrontend.entity.User;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class UserDto {
     private Long id;
@@ -19,8 +21,16 @@ public class UserDto {
     private String gender;
     private String phone;
 
+
+
+
     public UserDto() {
     }
+
+
+
+
+
 
     public String getFirstname() {
         return firstname;
@@ -133,6 +143,7 @@ public class UserDto {
         user.setFirstname(this.firstname);
         user.setLastname(this.lastname);
         user.setGender(this.gender);
+
 
 
         return user;

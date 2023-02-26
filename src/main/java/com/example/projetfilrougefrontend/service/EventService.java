@@ -31,7 +31,7 @@ public class EventService {
     public List<EventDto> fetchEvents() {
         return eventRepository.findAll()
                 .stream()
-                .map(user -> user.toDto())
+                .map(event -> event.toDto())
                 .collect(Collectors.toList());
     }
 

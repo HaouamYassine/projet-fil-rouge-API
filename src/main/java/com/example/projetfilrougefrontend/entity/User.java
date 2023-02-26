@@ -24,11 +24,8 @@ public class User {
     private String gender;
     private String phone;
 
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    @JoinTable( name = "userAffiliate",
-            joinColumns = @JoinColumn(name="idEvent"),
-            inverseJoinColumns = @JoinColumn( name = "idUser" ) )
-    private List<Event> eventList;
+//    @OneToMany( targetEntity=Event.class, mappedBy="user" )
+//    private List<Event> eventList;
 
 
     public User() {
@@ -103,9 +100,7 @@ public class User {
                 String lastname,
                 LocalDate birthdate,
                 String gender,
-                String phone,
-
-                List<Event> eventList) {
+                String phone) {
         this.id = id;
         this.admin = admin;
         this.username = username;
@@ -119,7 +114,7 @@ public class User {
         this.gender=gender;
         this.phone=phone;
 
-        this.eventList = eventList;
+//        this.eventList = eventList;
     }
 
     public Long getId() {
@@ -169,14 +164,14 @@ public class User {
     public void setActivate(Boolean activate) {
         this.activate = activate;
     }
-
-    public List<Event> getEventList() {
-        return eventList;
-    }
-
-    public void setEventList(List<Event> eventList) {
-        this.eventList = eventList;
-    }
+//
+//    public List<Event> getEventList() {
+//        return eventList;
+//    }
+//
+//    public void setEventList(List<Event> eventList) {
+//        this.eventList = eventList;
+//    }
 
     public UserDto toDto() {
         UserDto userDto = new UserDto();
