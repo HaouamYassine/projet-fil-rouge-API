@@ -24,7 +24,7 @@ public class User {
     private String gender;
     private String phone;
 
-    @ManyToMany
+    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinTable( name = "userAffiliate",
             joinColumns = @JoinColumn(name="idEvent"),
             inverseJoinColumns = @JoinColumn( name = "idUser" ) )

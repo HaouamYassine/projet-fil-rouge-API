@@ -25,25 +25,26 @@ public class Event {
    //TODO: mettre strartime et endtime en format LocalTime
     private LocalTime startTime;
     private LocalTime endTime;
-    @ManyToMany
+    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinTable(name = "userAffiliate",
             joinColumns = @JoinColumn(name = "idUser"),
             inverseJoinColumns = @JoinColumn(name = "idEvent"))
-    private List<User> users = new ArrayList<User>();
+    private User user = new User();
 
 
     public Event() {
     }
 
-    public Event(Long id, String title, String description, LocalDate date, List<User> users) {
+    public Event(Long id, String title, String description, LocalDate date, User user) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
-        this.users = users;
+        this.user = user;
     }
 
-    public Event(String title, String description, LocalDate date, LocalTime startTime, LocalTime endTime) {
+    public Event(Long id, String title, String description, LocalDate date, LocalTime startTime, LocalTime endTime) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
@@ -101,12 +102,12 @@ public class Event {
         this.date = date;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public EventDto toDto() {
@@ -118,8 +119,7 @@ public class Event {
         eventDto.setStartTime(this.startTime);
         eventDto.setEndTime(this.endTime);
         eventDto.setDescription(this.description);
-        eventDto.setUsers(this.users);
-
+        eventDto.setUser(this.user);
         return eventDto;
     }
 }

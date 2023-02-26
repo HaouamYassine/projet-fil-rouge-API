@@ -3,6 +3,7 @@ package com.example.projetfilrougefrontend.dto;
 import com.example.projetfilrougefrontend.entity.Event;
 import com.example.projetfilrougefrontend.entity.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -22,8 +23,8 @@ public class EventDto {
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDate date;
-
-    private List<User> users;
+    @JsonIgnore
+    private User user;
 
     public EventDto() {
     }
@@ -76,12 +77,12 @@ public class EventDto {
         this.endTime = endTime;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Event toEntity() {Event event = new Event();
@@ -92,7 +93,7 @@ public class EventDto {
         event.setStartTime(this.startTime);
         event.setEndTime(this.endTime);
         event.setDescription(this.description);
-        event.setUsers(this.users);
+        event.setUser(this.user);
 
         return event;
     }
