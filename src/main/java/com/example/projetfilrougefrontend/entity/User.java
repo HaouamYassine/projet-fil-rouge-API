@@ -30,9 +30,16 @@ public class User {
     private Set<Affiliate> affiliations = new HashSet<>();
 
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
 
     public User() {
     }
+
 
     public Set<Affiliate> getAffiliations() {
         return affiliations;
@@ -40,6 +47,12 @@ public class User {
 
     public void setAffiliations(Set<Affiliate> affiliations) {
         this.affiliations = affiliations;
+
+    public User(String username, String mail, String password) {
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+
     }
 
     public String getFirstname() {
@@ -99,6 +112,13 @@ public class User {
         this.birthdate = birthdate;
         this.gender = gender;
         this.phone = phone;
+    }
+
+    public User(String username, String mail, String password, String ville) {
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+        this.ville = ville;
     }
 
     public User(Long id, Boolean admin,
@@ -178,6 +198,14 @@ public class User {
     }
 
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     public UserDto toDto() {
         UserDto userDto = new UserDto();
 
@@ -194,5 +222,29 @@ public class User {
         userDto.setFirstname(this.firstname);
         userDto.setLastname(this.lastname);
         return userDto;
+    }
+
+    public User(String username,
+                String mail,
+                String password,
+                String ville,
+                Boolean activate,
+                Boolean admin,
+                LocalDate birthdate,
+                String firstname,
+                String lastname,
+                String gender,
+                String phone) {
+        this.admin = admin;
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+        this.activate = activate;
+        this.ville = ville;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birthdate = birthdate;
+        this.gender = gender;
+        this.phone = phone;
     }
 }
