@@ -1,5 +1,7 @@
 package com.example.projetfilrougefrontend.dto;
 
+import com.example.projetfilrougefrontend.entity.Affiliate;
+
 public class AffiliateDto {
 
     private Long id;
@@ -32,4 +34,11 @@ public class AffiliateDto {
     public void setIdUser(Long idUser) {
         this.idUser = idUser;
     }
+
+//    public AffiliateDto toEntitiy() {Affiliate affilate = new Affiliate();
+//        affilate.setId(this.id);
+////        affilate.setUser();
+////        affilate.set
+
+//    }
 }

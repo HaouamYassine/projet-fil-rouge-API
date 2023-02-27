@@ -30,8 +30,6 @@ public class Event {
     @JoinColumn(name = "planning_id")
     private Planning planning;
 
-    @OneToMany(mappedBy = "event")
-    private Set<Affiliate> affiliates = new HashSet<>();
 
 
     public Event() {
@@ -54,6 +52,16 @@ public class Event {
         this.endTime = endTime;
     }
 
+    public Event(Long id, String title, String description, LocalDate date, LocalTime startTime, LocalTime endTime, Planning planning) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.planning = planning;
+    }
+
     public Planning getPlanning() {
         return planning;
     }
@@ -62,13 +70,6 @@ public class Event {
         this.planning = planning;
     }
 
-    public Set<Affiliate> getAffiliates() {
-        return affiliates;
-    }
-
-    public void setAffiliates(Set<Affiliate> affiliates) {
-        this.affiliates = affiliates;
-    }
 
     public LocalTime getStartTime() {
         return startTime;

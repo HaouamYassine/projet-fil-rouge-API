@@ -10,9 +10,7 @@ public class Affiliate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Event event;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -44,13 +42,7 @@ public class Affiliate {
         this.planning = planning;
     }
 
-    public Event getEvent() {
-        return event;
-    }
 
-    public void setEvent(Event event) {
-        this.event = event;
-    }
 
     public Long getPlanningRights() {
         return planningRights;

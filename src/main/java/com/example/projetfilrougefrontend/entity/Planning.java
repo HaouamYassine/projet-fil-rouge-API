@@ -1,5 +1,6 @@
 package com.example.projetfilrougefrontend.entity;
 
+import com.example.projetfilrougefrontend.dto.PlanningDto;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -36,4 +37,16 @@ public class Planning {
     public void setAffiliates(Set<Affiliate> affiliates) {
         this.affiliates = affiliates;
     }
+
+
+    public PlanningDto toDto() {
+        PlanningDto planningDto = new PlanningDto();
+
+        planningDto.setId(this.id);
+        planningDto.setAffiliates(this.affiliates);
+
+        return planningDto;
+    }
+
+
 }
