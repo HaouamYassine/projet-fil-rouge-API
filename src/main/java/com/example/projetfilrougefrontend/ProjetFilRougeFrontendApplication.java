@@ -80,6 +80,9 @@ public class ProjetFilRougeFrontendApplication {
                         LocalDate.of(1996, 6, 25),
                         "Other",
                         "0600000000");
+                Role roleuserX1 = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Role not found"));
+                user.getRoles().add(roleuserX1);
                 userRepository.save(user);
 
                 User user1 = new User(
@@ -95,6 +98,9 @@ public class ProjetFilRougeFrontendApplication {
                         LocalDate.of(1996, 6, 25),
                         "M",
                         "0600000000");
+                Role roleuserX2 = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Role not found"));
+                user.getRoles().add(roleuserX2);
                 userRepository.save(user1);
 
                 User user2 = new User(
@@ -110,6 +116,9 @@ public class ProjetFilRougeFrontendApplication {
                         LocalDate.of(1997, 9, 18),
                         "M",
                         "0600000000");
+                Role roleuserX3 = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Role not found"));
+                user.getRoles().add(roleuserX3);
                 userRepository.save(user2);
 
                 User user3 = new User(
@@ -125,6 +134,9 @@ public class ProjetFilRougeFrontendApplication {
                         LocalDate.of(1980, 8, 12),
                         "M",
                         "0600000000");
+                Role roleuserX4 = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Role not found"));
+                user.getRoles().add(roleuserX4);
                 userRepository.save(user3);
 
                 User user4 = new User(
@@ -140,6 +152,9 @@ public class ProjetFilRougeFrontendApplication {
                         LocalDate.of(2000, 1, 1),
                         "Other",
                         "0600000000");
+                Role roleuserX5 = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Role not found"));
+                user.getRoles().add(roleuserX5);
                 userRepository.save(user4);
 
                 User user5 = new User(
@@ -155,6 +170,9 @@ public class ProjetFilRougeFrontendApplication {
                         LocalDate.of(2000, 1, 1),
                         "Other",
                         "0600000000");
+                Role roleuserX6 = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Role not found"));
+                user.getRoles().add(roleuserX6);
                 userRepository.save(user5);
 
                 User user6 = new User(
@@ -170,6 +188,9 @@ public class ProjetFilRougeFrontendApplication {
                         LocalDate.of(2000, 1, 1),
                         "Other",
                         "0600000000");
+                Role roleuserX7 = roleRepository.findByName(ERole.ROLE_USER)
+                        .orElseThrow(() -> new RuntimeException("Role not found"));
+                user.getRoles().add(roleuserX7);
                 userRepository.save(user6);
 
 

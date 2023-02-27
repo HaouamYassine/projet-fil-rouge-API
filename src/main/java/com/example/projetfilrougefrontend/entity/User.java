@@ -41,6 +41,7 @@ public class User {
     }
 
 
+
     public Set<Affiliate> getAffiliations() {
         return affiliations;
     }
