@@ -1,8 +1,12 @@
 package com.example.projetfilrougefrontend;
 
+import com.example.projetfilrougefrontend.entity.Affiliate;
 import com.example.projetfilrougefrontend.entity.Event;
+import com.example.projetfilrougefrontend.entity.Planning;
 import com.example.projetfilrougefrontend.entity.User;
+import com.example.projetfilrougefrontend.repository.AffiliateRepository;
 import com.example.projetfilrougefrontend.repository.EventRepository;
+import com.example.projetfilrougefrontend.repository.PlanningRepository;
 import com.example.projetfilrougefrontend.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +30,10 @@ public class ProjetFilRougeFrontendApplication {
     UserRepository userRepository;
     @Autowired
     EventRepository eventRepository;
+    @Autowired
+    PlanningRepository planningRepository;
+    @Autowired
+    AffiliateRepository affiliateRepository;
 //    @Autowired
 //    BCryptPasswordEncoder passwordEncoder;
 
@@ -40,6 +48,9 @@ public class ProjetFilRougeFrontendApplication {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
+
+            //GENERATIONS DE USERS
+
                 User user = new User(
                         1L,
                         true,
@@ -52,8 +63,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Admin",
                         LocalDate.of(1996, 6, 25),
                         "Other",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user);
 
                 User user1 = new User(
@@ -68,8 +78,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Haouam",
                         LocalDate.of(1996, 6, 25),
                         "M",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user1);
 
                 User user2 = new User(
@@ -84,8 +93,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Zouba",
                         LocalDate.of(1997, 9, 18),
                         "M",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user2);
 
                 User user3 = new User(
@@ -100,8 +108,7 @@ public class ProjetFilRougeFrontendApplication {
                         "Angular",
                         LocalDate.of(1980, 8, 12),
                         "M",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user3);
 
                 User user4 = new User(
@@ -116,8 +123,7 @@ public class ProjetFilRougeFrontendApplication {
                         "bot1",
                         LocalDate.of(2000, 1, 1),
                         "Other",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user4);
 
                 User user5 = new User(
@@ -132,8 +138,7 @@ public class ProjetFilRougeFrontendApplication {
                         "bot2",
                         LocalDate.of(2000, 1, 1),
                         "Other",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user5);
 
                 User user6 = new User(
@@ -148,9 +153,28 @@ public class ProjetFilRougeFrontendApplication {
                         "bot3",
                         LocalDate.of(2000, 1, 1),
                         "Other",
-                        "0600000000",
-                        null);
+                        "0600000000");
                 userRepository.save(user6);
+
+
+                //GENERATIONS DE PLANNING
+
+                Planning planning = new Planning();
+                planning.setId(1L);
+                planningRepository.save(planning);
+
+                Planning planning2 = new Planning();
+                planning2.setId(2L);
+                planningRepository.save(planning2);
+
+                Planning planning3 = new Planning();
+                planning3.setId(3L);
+                planningRepository.save(planning3);
+
+
+
+
+                //GENERATIONS D'EVENT
 
                 Event event = new Event(
                         1L,
@@ -158,7 +182,8 @@ public class ProjetFilRougeFrontendApplication {
                         "Rendez vous numéro un",
                         LocalDate.of(2023, 03, 1),
                         LocalTime.of(8, 30, 0),
-                        LocalTime.of(10, 30, 0)
+                        LocalTime.of(10, 30, 0),
+                        planning
                 );
                 eventRepository.save(event);
 
@@ -168,7 +193,8 @@ public class ProjetFilRougeFrontendApplication {
                         "Rendez vous numéro deux",
                         LocalDate.of(2023, 03, 2),
                         LocalTime.of(15, 30, 0),
-                        LocalTime.of(18, 30, 0)
+                        LocalTime.of(18, 30, 0),
+                        planning
                 );
                 eventRepository.save(event2);
 
@@ -178,7 +204,8 @@ public class ProjetFilRougeFrontendApplication {
                         "Rendez vous numéro un",
                         LocalDate.of(2023, 02, 27),
                         LocalTime.of(15, 30, 0),
-                        LocalTime.of(16, 30, 0)
+                        LocalTime.of(16, 30, 0),
+                        planning
                 );
                 eventRepository.save(event3);
 
@@ -191,18 +218,47 @@ public class ProjetFilRougeFrontendApplication {
                         "personne n'est venu",
                         LocalDate.of(2023, 2, 27),
                         LocalTime.of(15, 30, 0),
-                        LocalTime.of(16, 30, 0));
+                        LocalTime.of(16, 30, 0),
+                        planning
+                                );
                 eventRepository.save(event4);
 
-                // Ajout des événements à la liste d'événements de l'utilisateur
-                List<Event> events = new ArrayList<>();
-                events.add(event3);
-                events.add(event4);
-                user6.setEventList(events);
 
-                // Ajout de l'utilisateur à la liste d'utilisateurs de chaque événement
-                event3.setUser(user6);
-                event4.setUser(user6);
+
+                //GENERATIONS DES AFFILIATES
+
+                Affiliate affiliate = new Affiliate();
+                affiliate.setPlanning(planning);
+                affiliate.setUser(user);
+                affiliate.setId(1L);
+                affiliateRepository.save(affiliate);
+
+
+                Affiliate affiliate2 = new Affiliate();
+                affiliate2.setPlanning(planning2);
+                affiliate2.setUser(user2);
+                affiliate2.setId(2L);
+                affiliateRepository.save(affiliate2);
+
+
+                Affiliate affiliate3 = new Affiliate();
+                affiliate3.setPlanning(planning3);
+                affiliate3.setUser(user3);
+                affiliate3.setId(3L);
+                affiliateRepository.save(affiliate3);
+
+
+
+
+                // Ajout des événements à la liste d'événements de l'utilisateur
+//                List<Event> events = new ArrayList<>();
+//                events.add(event3);
+//                events.add(event4);
+//                user6.setEventList(events);
+//
+//                // Ajout de l'utilisateur à la liste d'utilisateurs de chaque événement
+//                event3.setUser(user6);
+//                event4.setUser(user6);
 
 //                userRepository.save(user6);
             }

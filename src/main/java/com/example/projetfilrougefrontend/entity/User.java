@@ -26,11 +26,9 @@ public class User {
     private String gender;
     private String phone;
 
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    @JoinTable( name = "userAffiliate",
-            joinColumns = @JoinColumn(name="idEvent"),
-            inverseJoinColumns = @JoinColumn( name = "idUser" ) )
-    private List<Event> eventList;
+    @OneToMany(mappedBy = "user")
+    private Set<Affiliate> affiliations = new HashSet<>();
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -42,10 +40,19 @@ public class User {
     public User() {
     }
 
+
+    public Set<Affiliate> getAffiliations() {
+        return affiliations;
+    }
+
+    public void setAffiliations(Set<Affiliate> affiliations) {
+        this.affiliations = affiliations;
+
     public User(String username, String mail, String password) {
         this.username = username;
         this.mail = mail;
         this.password = password;
+
     }
 
     public String getFirstname() {
@@ -124,9 +131,9 @@ public class User {
                 String lastname,
                 LocalDate birthdate,
                 String gender,
-                String phone,
+                String phone)
 
-                List<Event> eventList) {
+                 {
         this.id = id;
         this.admin = admin;
         this.username = username;
@@ -140,7 +147,6 @@ public class User {
         this.gender=gender;
         this.phone=phone;
 
-        this.eventList = eventList;
     }
 
     public Long getId() {
@@ -191,13 +197,6 @@ public class User {
         this.activate = activate;
     }
 
-    public List<Event> getEventList() {
-        return eventList;
-    }
-
-    public void setEventList(List<Event> eventList) {
-        this.eventList = eventList;
-    }
 
     public Set<Role> getRoles() {
         return roles;

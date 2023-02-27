@@ -93,7 +93,7 @@ public class EventDto {
         event.setStartTime(this.startTime);
         event.setEndTime(this.endTime);
         event.setDescription(this.description);
-        event.setUser(this.user);
+
 
         return event;
     }

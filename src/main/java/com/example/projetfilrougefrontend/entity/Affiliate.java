@@ -9,10 +9,47 @@ public class Affiliate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long idEvent;
-    private Long idUser;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "planning_id")
+    private Planning planning;
+
+    // planningRights sera propre à cette entité de type Long
+    private Long planningRights;
 
     public Affiliate() {
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Planning getPlanning() {
+        return planning;
+    }
+
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
+    }
+
+
+
+    public Long getPlanningRights() {
+        return planningRights;
+    }
+
+    public void setPlanningRights(Long planningRights) {
+        this.planningRights = planningRights;
     }
 
     public Long getId() {
@@ -23,19 +60,5 @@ public class Affiliate {
         this.id = id;
     }
 
-    public Long getIdEvent() {
-        return idEvent;
-    }
 
-    public void setIdEvent(Long idEvent) {
-        this.idEvent = idEvent;
-    }
-
-    public Long getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
-    }
 }
