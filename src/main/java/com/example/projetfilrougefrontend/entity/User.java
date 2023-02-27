@@ -150,6 +150,22 @@ public class User {
 
     }
 
+    public User(Long id, Boolean admin, String username, String mail, String password, Boolean activate, String ville, String firstname, String lastname, LocalDate birthdate, String gender, String phone, Set<Role> roles) {
+        this.id = id;
+        this.admin = admin;
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+        this.activate = activate;
+        this.ville = ville;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birthdate = birthdate;
+        this.gender = gender;
+        this.phone = phone;
+        this.roles = roles;
+    }
+
     public Long getId() {
         return id;
     }

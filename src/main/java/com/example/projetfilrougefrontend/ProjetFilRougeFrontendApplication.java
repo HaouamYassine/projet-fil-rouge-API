@@ -1,13 +1,7 @@
 package com.example.projetfilrougefrontend;
 
-import com.example.projetfilrougefrontend.entity.Affiliate;
-import com.example.projetfilrougefrontend.entity.Event;
-import com.example.projetfilrougefrontend.entity.Planning;
-import com.example.projetfilrougefrontend.entity.User;
-import com.example.projetfilrougefrontend.repository.AffiliateRepository;
-import com.example.projetfilrougefrontend.repository.EventRepository;
-import com.example.projetfilrougefrontend.repository.PlanningRepository;
-import com.example.projetfilrougefrontend.repository.UserRepository;
+import com.example.projetfilrougefrontend.entity.*;
+import com.example.projetfilrougefrontend.repository.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +15,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+
+import static com.example.projetfilrougefrontend.entity.ERole.*;
 
 @SpringBootApplication
 public class ProjetFilRougeFrontendApplication {
@@ -34,6 +31,8 @@ public class ProjetFilRougeFrontendApplication {
     PlanningRepository planningRepository;
     @Autowired
     AffiliateRepository affiliateRepository;
+    @Autowired
+    RoleRepository roleRepository;
 //    @Autowired
 //    BCryptPasswordEncoder passwordEncoder;
 
@@ -49,7 +48,25 @@ public class ProjetFilRougeFrontendApplication {
             @Override
             public void run(String... args) throws Exception {
 
-            //GENERATIONS DE USERS
+                //AJOUT DES ROLES EN BDD
+                Role roleuser = new Role(
+                        1,
+                        ROLE_USER
+                );
+                roleRepository.save(roleuser);
+                Role roleuser2 = new Role(
+                        2,
+                        ROLE_SUPER_ADMIN
+                );
+                roleRepository.save(roleuser2);
+                Role roleuser3 = new Role(
+                        3,
+                        ROLE_ADMIN
+                );
+                roleRepository.save(roleuser3);
+
+
+                //GENERATIONS DE USERS
 
                 User user = new User(
                         1L,
@@ -63,8 +80,10 @@ public class ProjetFilRougeFrontendApplication {
                         "Admin",
                         LocalDate.of(1996, 6, 25),
                         "Other",
-                        "0600000000");
+                        "0600000000"
+                );
                 userRepository.save(user);
+
 
                 User user1 = new User(
                         2L,
@@ -172,8 +191,6 @@ public class ProjetFilRougeFrontendApplication {
                 planningRepository.save(planning3);
 
 
-
-
                 //GENERATIONS D'EVENT
 
                 Event event = new Event(
@@ -220,9 +237,8 @@ public class ProjetFilRougeFrontendApplication {
                         LocalTime.of(15, 30, 0),
                         LocalTime.of(16, 30, 0),
                         planning
-                                );
+                );
                 eventRepository.save(event4);
-
 
 
                 //GENERATIONS DES AFFILIATES
@@ -246,8 +262,6 @@ public class ProjetFilRougeFrontendApplication {
                 affiliate3.setUser(user3);
                 affiliate3.setId(3L);
                 affiliateRepository.save(affiliate3);
-
-
 
 
                 // Ajout des événements à la liste d'événements de l'utilisateur

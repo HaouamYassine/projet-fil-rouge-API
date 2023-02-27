@@ -17,9 +17,15 @@ public class Role {
 
     }
 
+    public Role(Integer id, ERole name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Role(ERole name) {
         this.name = name;
     }
+
 
     public Integer getId() {
         return id;
