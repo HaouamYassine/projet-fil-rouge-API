@@ -1,13 +1,7 @@
 package com.example.projetfilrougefrontend;
 
-import com.example.projetfilrougefrontend.entity.Affiliate;
-import com.example.projetfilrougefrontend.entity.Event;
-import com.example.projetfilrougefrontend.entity.Planning;
-import com.example.projetfilrougefrontend.entity.User;
-import com.example.projetfilrougefrontend.repository.AffiliateRepository;
-import com.example.projetfilrougefrontend.repository.EventRepository;
-import com.example.projetfilrougefrontend.repository.PlanningRepository;
-import com.example.projetfilrougefrontend.repository.UserRepository;
+import com.example.projetfilrougefrontend.entity.*;
+import com.example.projetfilrougefrontend.repository.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.example.projetfilrougefrontend.entity.ERole.*;
+
 @SpringBootApplication
 public class ProjetFilRougeFrontendApplication {
 
@@ -34,6 +30,9 @@ public class ProjetFilRougeFrontendApplication {
     PlanningRepository planningRepository;
     @Autowired
     AffiliateRepository affiliateRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
 //    @Autowired
 //    BCryptPasswordEncoder passwordEncoder;
 
@@ -48,6 +47,23 @@ public class ProjetFilRougeFrontendApplication {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
+
+                //AJOUT DES ROLES EN BDD
+                Role roleuser = new Role(
+                        1,
+                        ROLE_USER
+                );
+                roleRepository.save(roleuser);
+                Role roleuser2 = new Role(
+                        2,
+                        ROLE_SUPER_ADMIN
+                );
+                roleRepository.save(roleuser2);
+                Role roleuser3 = new Role(
+                        3,
+                        ROLE_ADMIN
+                );
+                roleRepository.save(roleuser3);
 
             //GENERATIONS DE USERS
 
