@@ -8,7 +8,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -33,8 +35,17 @@ public class ProjetFilRougeFrontendApplication {
     AffiliateRepository affiliateRepository;
     @Autowired
     RoleRepository roleRepository;
-//    @Autowired
-//    BCryptPasswordEncoder passwordEncoder;
+
+//    @Bean
+//    public BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
 
     public static void main(String[] args) {
         SpringApplication.run(ProjetFilRougeFrontendApplication.class, args);
@@ -67,13 +78,14 @@ public class ProjetFilRougeFrontendApplication {
 
 
                 //GENERATIONS DE USERS
-
+                String password = "admin";
+                String encodedPassword = passwordEncoder.encode(password);
                 User user = new User(
                         1L,
                         true,
                         "admin",
                         "admin@mail.com",
-                        "admin",
+                         encodedPassword,
                         true,
                         "Paris",
                         "Admin",
@@ -84,13 +96,14 @@ public class ProjetFilRougeFrontendApplication {
                 );
                 userRepository.save(user);
 
-
+                String password2 = "y123";
+                String encodedPassword2 = passwordEncoder.encode(password2);
                 User user1 = new User(
                         2L,
                         true,
                         "yassine",
                         "yassine@mail.com",
-                        "y123",
+                        encodedPassword2,
                         true,
                         "Bruxelles",
                         "Yassine",
@@ -100,12 +113,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user1);
 
+                String password3 = "h123";
+                String encodedPassword3 = passwordEncoder.encode(password3);
                 User user2 = new User(
                         3L,
                         true,
                         "hamid",
                         "hamid@mail.com",
-                        "h123",
+                        encodedPassword3,
                         true,
                         "London",
                         "Hamid",
@@ -115,12 +130,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user2);
 
+                String password4 = "n123";
+                String encodedPassword4 = passwordEncoder.encode(password4);
                 User user3 = new User(
                         4L,
                         true,
                         "nathan",
                         "nathan@mail.com",
-                        "n123",
+                        encodedPassword4,
                         true,
                         "Madrid",
                         "Nathan",
@@ -130,12 +147,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user3);
 
+                String password5 = "bot1";
+                String encodedPassword5 = passwordEncoder.encode(password5);
                 User user4 = new User(
                         5L,
                         false,
                         "bot1",
                         "bot1@mail.com",
-                        "bot1",
+                        encodedPassword5,
                         true,
                         "Rome",
                         "bot",
@@ -145,12 +164,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user4);
 
+                String password6 = "bot2";
+                String encodedPassword6 = passwordEncoder.encode(password6);
                 User user5 = new User(
                         6L,
                         false,
                         "bot2",
                         "bot2@mail.com",
-                        "bot2",
+                        encodedPassword6,
                         true,
                         "Berlin",
                         "bot",
@@ -160,12 +181,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user5);
 
+                String password7 = "bot3";
+                String encodedPassword7 = passwordEncoder.encode(password7);
                 User user6 = new User(
                         7L,
                         false,
                         "bot3",
                         "bot3@mail.com",
-                        "bot3",
+                        encodedPassword7,
                         true,
                         "Alger",
                         "bot",
