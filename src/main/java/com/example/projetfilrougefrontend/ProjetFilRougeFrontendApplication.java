@@ -234,6 +234,20 @@ public class ProjetFilRougeFrontendApplication {
                 affiliateRepository.save(affiliate);
 
 
+                Affiliate affiliate2 = new Affiliate();
+                affiliate2.setPlanning(planning2);
+                affiliate2.setUser(user2);
+                affiliate2.setId(2L);
+                affiliateRepository.save(affiliate2);
+
+
+                Affiliate affiliate3 = new Affiliate();
+                affiliate3.setPlanning(planning3);
+                affiliate3.setUser(user3);
+                affiliate3.setId(3L);
+                affiliateRepository.save(affiliate3);
+
+
 
 
                 // Ajout des événements à la liste d'événements de l'utilisateur
