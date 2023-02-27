@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/events")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials="true")
 public class EventController {
 
 
