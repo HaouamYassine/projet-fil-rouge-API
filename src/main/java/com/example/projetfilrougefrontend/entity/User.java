@@ -107,6 +107,13 @@ public class User {
         this.phone = phone;
     }
 
+    public User(String username, String mail, String password, String ville) {
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+        this.ville = ville;
+    }
+
     public User(Long id, Boolean admin,
                 String username,
                 String mail,
@@ -216,5 +223,29 @@ public class User {
         userDto.setFirstname(this.firstname);
         userDto.setLastname(this.lastname);
         return userDto;
+    }
+
+    public User(String username,
+                String mail,
+                String password,
+                String ville,
+                Boolean activate,
+                Boolean admin,
+                LocalDate birthdate,
+                String firstname,
+                String lastname,
+                String gender,
+                String phone) {
+        this.admin = admin;
+        this.username = username;
+        this.mail = mail;
+        this.password = password;
+        this.activate = activate;
+        this.ville = ville;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.birthdate = birthdate;
+        this.gender = gender;
+        this.phone = phone;
     }
 }

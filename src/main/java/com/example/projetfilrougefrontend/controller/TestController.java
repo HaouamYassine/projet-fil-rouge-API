@@ -24,12 +24,12 @@ public class TestController {
     @GetMapping("/mod")
     @PreAuthorize("hasRole('ADMIN')")
     public String moderatorAccess() {
-        return "Moderator Board.";
+        return "admin Board.";
     }
 
     @GetMapping("/admin")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
     public String adminAccess() {
-        return "Admin Board.";
+        return "super admin Board.";
     }
 }
