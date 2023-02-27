@@ -47,6 +47,7 @@ public class User {
 
     public void setAffiliations(Set<Affiliate> affiliations) {
         this.affiliations = affiliations;
+    }
 
     public User(String username, String mail, String password) {
         this.username = username;
