@@ -25,22 +25,24 @@ public class Event {
    //TODO: mettre strartime et endtime en format LocalTime
     private LocalTime startTime;
     private LocalTime endTime;
-    @ManyToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    @JoinTable(name = "userAffiliate",
-            joinColumns = @JoinColumn(name = "idUser"),
-            inverseJoinColumns = @JoinColumn(name = "idEvent"))
-    private User user = new User();
+
+    @ManyToOne
+    @JoinColumn(name = "planning_id")
+    private Planning planning;
+
+    @OneToMany(mappedBy = "event")
+    private Set<Affiliate> affiliates = new HashSet<>();
 
 
     public Event() {
     }
 
-    public Event(Long id, String title, String description, LocalDate date, User user) {
+    public Event(Long id, String title, String description, LocalDate date) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
-        this.user = user;
+
     }
 
     public Event(Long id, String title, String description, LocalDate date, LocalTime startTime, LocalTime endTime) {
@@ -50,6 +52,22 @@ public class Event {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    public Planning getPlanning() {
+        return planning;
+    }
+
+    public void setPlanning(Planning planning) {
+        this.planning = planning;
+    }
+
+    public Set<Affiliate> getAffiliates() {
+        return affiliates;
+    }
+
+    public void setAffiliates(Set<Affiliate> affiliates) {
+        this.affiliates = affiliates;
     }
 
     public LocalTime getStartTime() {
@@ -102,13 +120,7 @@ public class Event {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public EventDto toDto() {
         EventDto eventDto = new EventDto();
@@ -119,7 +131,6 @@ public class Event {
         eventDto.setStartTime(this.startTime);
         eventDto.setEndTime(this.endTime);
         eventDto.setDescription(this.description);
-        eventDto.setUser(this.user);
         return eventDto;
     }
 }

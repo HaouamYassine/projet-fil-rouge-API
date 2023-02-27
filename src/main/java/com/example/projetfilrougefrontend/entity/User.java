@@ -4,7 +4,9 @@ import com.example.projetfilrougefrontend.dto.UserDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -24,14 +26,20 @@ public class User {
     private String gender;
     private String phone;
 
-    @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
-    @JoinTable( name = "userAffiliate",
-            joinColumns = @JoinColumn(name="idEvent"),
-            inverseJoinColumns = @JoinColumn( name = "idUser" ) )
-    private List<Event> eventList;
+    @OneToMany(mappedBy = "user")
+    private Set<Affiliate> affiliations = new HashSet<>();
+
 
 
     public User() {
+    }
+
+    public Set<Affiliate> getAffiliations() {
+        return affiliations;
+    }
+
+    public void setAffiliations(Set<Affiliate> affiliations) {
+        this.affiliations = affiliations;
     }
 
     public String getFirstname() {
@@ -103,9 +111,9 @@ public class User {
                 String lastname,
                 LocalDate birthdate,
                 String gender,
-                String phone,
+                String phone)
 
-                List<Event> eventList) {
+                 {
         this.id = id;
         this.admin = admin;
         this.username = username;
@@ -119,7 +127,6 @@ public class User {
         this.gender=gender;
         this.phone=phone;
 
-        this.eventList = eventList;
     }
 
     public Long getId() {
@@ -170,13 +177,6 @@ public class User {
         this.activate = activate;
     }
 
-    public List<Event> getEventList() {
-        return eventList;
-    }
-
-    public void setEventList(List<Event> eventList) {
-        this.eventList = eventList;
-    }
 
     public UserDto toDto() {
         UserDto userDto = new UserDto();
