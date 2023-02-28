@@ -209,8 +209,8 @@ public class ProjetFilRougeFrontendApplication {
 
                 Event event4 = new Event(
                         4L,
-                        "Anniv Hamid",
-                        "personne n'est venu",
+                        "Réunion",
+                        "Réunion budgetaire",
                         LocalDate.of(2023, 2, 27),
                         LocalTime.of(15, 30, 0),
                         LocalTime.of(16, 30, 0),
