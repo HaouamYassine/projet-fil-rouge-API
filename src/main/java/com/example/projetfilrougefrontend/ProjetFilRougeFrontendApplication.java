@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -29,8 +30,8 @@ public class ProjetFilRougeFrontendApplication {
     PlanningRepository planningRepository;
     @Autowired
     AffiliateRepository affiliateRepository;
-//    @Autowired
-//    BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public static void main(String[] args) {
         SpringApplication.run(ProjetFilRougeFrontendApplication.class, args);
@@ -45,13 +46,14 @@ public class ProjetFilRougeFrontendApplication {
             public void run(String... args) throws Exception {
 
             //GENERATIONS DE USERS
-
+                String mdp1 = "admin";
+                String mdpEncode1 = passwordEncoder.encode(mdp1);
                 User user = new User(
                         1L,
                         true,
                         "admin",
                         "admin@mail.com",
-                        "admin",
+                        mdpEncode1,
                         true,
                         "Paris",
                         "Admin",
@@ -61,12 +63,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user);
 
+                String mdp2 = "y123";
+                String mdpEncode2 = passwordEncoder.encode(mdp2);
                 User user1 = new User(
                         2L,
                         true,
                         "yassine",
                         "yassine@mail.com",
-                        "y123",
+                        mdpEncode2,
                         true,
                         "Bruxelles",
                         "Yassine",
@@ -76,12 +80,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user1);
 
+                String mdp3 = "h123";
+                String mdpEncode3 = passwordEncoder.encode(mdp3);
                 User user2 = new User(
                         3L,
                         true,
                         "hamid",
                         "hamid@mail.com",
-                        "h123",
+                        mdpEncode3,
                         true,
                         "London",
                         "Hamid",
@@ -91,12 +97,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user2);
 
+                String mdp4 = "n123";
+                String mdpEncode4 = passwordEncoder.encode(mdp4);
                 User user3 = new User(
                         4L,
                         true,
                         "nathan",
                         "nathan@mail.com",
-                        "n123",
+                        mdpEncode4,
                         true,
                         "Madrid",
                         "Nathan",
@@ -106,12 +114,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user3);
 
+                String mdp5 = "bot1";
+                String mdpEncode5 = passwordEncoder.encode(mdp5);
                 User user4 = new User(
                         5L,
                         false,
                         "bot1",
                         "bot1@mail.com",
-                        "bot1",
+                        mdpEncode5,
                         true,
                         "Rome",
                         "bot",
@@ -121,12 +131,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user4);
 
+                String mdp6 = "bot2";
+                String mdpEncode6 = passwordEncoder.encode(mdp6);
                 User user5 = new User(
                         6L,
                         false,
                         "bot2",
                         "bot2@mail.com",
-                        "bot2",
+                        mdpEncode6,
                         true,
                         "Berlin",
                         "bot",
@@ -136,12 +148,14 @@ public class ProjetFilRougeFrontendApplication {
                         "0600000000");
                 userRepository.save(user5);
 
+                String mdp7 = "bot3";
+                String mdpEncode7 = passwordEncoder.encode(mdp7);
                 User user6 = new User(
                         7L,
                         false,
                         "bot3",
                         "bot3@mail.com",
-                        "bot3",
+                        mdpEncode7,
                         true,
                         "Alger",
                         "bot",
