@@ -1,6 +1,5 @@
 package com.example.projetfilrougefrontend.controller;
 
-import com.example.projetfilrougefrontend.dto.EventDto;
 import com.example.projetfilrougefrontend.dto.PlanningDto;
 import com.example.projetfilrougefrontend.service.PlanningService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/planning")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 public class PlanningController {
 
     @Autowired

@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 public class UserController {
 
     @Autowired
@@ -41,7 +41,7 @@ public class UserController {
     //READ - GET USER BY ID
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable("id") Long userId) {
-       UserDto userDto = userService.findById(userId);
+        UserDto userDto = userService.findById(userId);
         if (userDto == null) {
             return ResponseEntity.notFound().build();
         }
@@ -59,8 +59,7 @@ public class UserController {
 
     //DELETE BY ID
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") Long userId)
-    {
+    public void deleteById(@PathVariable("id") Long userId) {
         userService.deleteById(userId);
     }
 

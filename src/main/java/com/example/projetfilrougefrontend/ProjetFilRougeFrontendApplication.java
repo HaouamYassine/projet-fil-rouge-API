@@ -1,13 +1,7 @@
 package com.example.projetfilrougefrontend;
 
-import com.example.projetfilrougefrontend.entity.Affiliate;
-import com.example.projetfilrougefrontend.entity.Event;
-import com.example.projetfilrougefrontend.entity.Planning;
-import com.example.projetfilrougefrontend.entity.User;
-import com.example.projetfilrougefrontend.repository.AffiliateRepository;
-import com.example.projetfilrougefrontend.repository.EventRepository;
-import com.example.projetfilrougefrontend.repository.PlanningRepository;
-import com.example.projetfilrougefrontend.repository.UserRepository;
+import com.example.projetfilrougefrontend.entity.*;
+import com.example.projetfilrougefrontend.repository.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,7 +19,8 @@ import java.util.List;
 @SpringBootApplication
 public class ProjetFilRougeFrontendApplication {
 
-
+    @Autowired
+    RoleRepository roleRepository;
     @Autowired
     UserRepository userRepository;
     @Autowired
@@ -248,7 +243,12 @@ public class ProjetFilRougeFrontendApplication {
                 affiliateRepository.save(affiliate3);
 
 
+                List<Role> roles = Arrays.asList(
+                        new Role(ERole.ROLE_USER),
+                        new Role(ERole.ROLE_ADMIN),
+                        new Role(ERole.ROLE_SUPER_ADMIN));
 
+                roleRepository.saveAll(roles);
 
                 // Ajout des événements à la liste d'événements de l'utilisateur
 //                List<Event> events = new ArrayList<>();

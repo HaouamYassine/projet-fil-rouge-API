@@ -1,47 +1,35 @@
 package com.example.projetfilrougefrontend.controller;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import jakarta.validation.Valid;
-
 import com.example.projetfilrougefrontend.entity.ERole;
 import com.example.projetfilrougefrontend.entity.Role;
 import com.example.projetfilrougefrontend.entity.User;
-
 import com.example.projetfilrougefrontend.payload.request.LoginRequest;
 import com.example.projetfilrougefrontend.payload.request.SignupRequest;
 import com.example.projetfilrougefrontend.payload.response.MessageResponse;
 import com.example.projetfilrougefrontend.payload.response.UserInfoResponse;
-
 import com.example.projetfilrougefrontend.repository.RoleRepository;
 import com.example.projetfilrougefrontend.repository.UserRepository;
-
 import com.example.projetfilrougefrontend.security.UserDetailsImpl;
 import com.example.projetfilrougefrontend.security.jwt.JwtUtils;
-
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
